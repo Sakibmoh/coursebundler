@@ -17,18 +17,14 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_CLIENT_SECRET,
 });
 
-nodeCron.schedule('0 0 0 5 * *', async () => {
+nodeCron.schedule("0 0 0 5 * *", async () => {
   try {
-    await Stats.create();
+    await Stats.create({});
   } catch (error) {
     console.log(error);
   }
 });
-const temp = async () => {
-  await Stats.create({});
-};
 
-temp();
 app.listen(process.env.PORT, () => {
   console.log(`server is working on port: ${process.env.PORT}`);
 });
